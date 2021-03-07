@@ -18,7 +18,7 @@
       </thead>
       <tbody>
         <tr v-for="user in userdata" :key="user.id">
-          <td><a href="detail.html">{{ user.id }}</a></td>
+          <td><a href="detail">{{ user.id }}</a></td>
           <td>{{ user.name }}</td>
         </tr>
       </tbody>
