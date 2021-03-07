@@ -17,17 +17,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td><a href="detail.html">001</a></td>
-          <td>Tanaka</td>
-        </tr>
-        <tr>
-          <td><a href="detail.html">002</a></td>
-          <td>Tamura</td>
-        </tr>
-        <tr>
-          <td><a href="detail.html">003</a></td>
-          <td>Nakata</td>
+        <tr v-for="user in userdata" :key="user.id">
+          <td><a href="detail.html">{{ user.id }}</a></td>
+          <td>{{ user.name }}</td>
         </tr>
       </tbody>
     </table>
@@ -44,6 +36,12 @@ import SearchBox from '@/components/SearchBox.vue'; // @ is an alias to /src
   },
 })
 export default class Home extends Vue {
+  userdata = [
+    { "id": "001", "name": "Tanaka" },
+    { "id": "002", "name": "Tamura" },
+    { "id": "003", "name": "Nakata" }
+  ];
+
   public searchButtonClicked(text: string) {
     console.log("Receive click event in Home.vue: " + text)
   }
