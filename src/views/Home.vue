@@ -37,6 +37,7 @@ import axios from 'axios';
   },
 })
 export default class Home extends Vue {
+  //Initial data  TODO: Get from server
   userdata = [
     { "id": "001", "name": "Tanaka" },
     { "id": "002", "name": "Tamura" },
@@ -46,7 +47,7 @@ export default class Home extends Vue {
   public searchButtonClicked(text: string) {
     console.log("Receive click event in Home.vue: " + text);
 
-    axios.get('http://localhost:3000/users', {
+    axios.get('http://localhost:3000/users', { // TODO: Get from official server
       params: {
         id: text
       }
