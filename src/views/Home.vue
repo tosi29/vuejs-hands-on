@@ -29,6 +29,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import SearchBox from '@/components/SearchBox.vue'; // @ is an alias to /src
+import axios from 'axios';
 
 @Component({
   components: {
@@ -43,7 +44,26 @@ export default class Home extends Vue {
   ];
 
   public searchButtonClicked(text: string) {
-    console.log("Receive click event in Home.vue: " + text)
+    console.log("Receive click event in Home.vue: " + text);
+
+    axios.get('http://localhost:3000/users', {
+      params: {
+        id: text
+      }
+    })
+      .then( (response) => {
+        // handle success
+        console.log(response);
+        this.userdata = response.data;
+      })
+      .catch( (error) => {
+        // handle error
+        console.log(error);
+      })
+      .then( () => {
+        // always executed
+      });
+      
   }
 }
 </script>
