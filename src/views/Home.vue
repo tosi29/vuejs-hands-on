@@ -1,13 +1,12 @@
 <template>
-  <div class="home">
+  <div class="home" id="app">
     <!-- 
     <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
     -->
     <h3>検索条件</h3>
     <div>
-      <label>User Name</label><input type="text" v-model="message" placeholder="Type user name to find">
-      <button>Search</button>
+      <search-box @click="searchButtonClicked"></search-box>
     </div>
     <h3>検索結果</h3>
     <table border="1">
@@ -37,12 +36,16 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import SearchBox from '@/components/SearchBox.vue'; // @ is an alias to /src
 
 @Component({
   components: {
-    HelloWorld,
+      SearchBox
   },
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  public searchButtonClicked(text: string) {
+    console.log("Receive click event in Home.vue: " + text)
+  }
+}
 </script>
